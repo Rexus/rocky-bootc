@@ -16,7 +16,7 @@ sudo podman build
 This will build a bootc image based on the configuration and containerfile under `10/. It will later be available under localhost/rocky-bootc:latest.
 
 ## Next
-To use this image look at (bootc-image-builder)[https://github.com/osbuild/bootc-image-builder]
+To use this image look at [bootc-image-builder](https://github.com/osbuild/bootc-image-builder)
 
 For example in 3 steps on how to build a qcow2 disk based on this image.
 1. Create the file config.toml with the following:
@@ -46,7 +46,7 @@ sudo podman run
 3. The qcow2 file will be available under `output`. Create a VM and then log into this machine using the credentials in `config.toml`.
 
 
-If already using Bootc then push to a registry so it can be fetched. (Here)[https://developers.redhat.com/articles/2025/03/12/how-build-deploy-and-manage-image-mode-rhel#push_the_container_image_to_the_registry] is a article oon how to explore immutable in Enterprise Linux further using a registry and automatic updates.
+If already using Bootc then push to a registry so it can be fetched. [Here](https://developers.redhat.com/articles/2025/03/12/how-build-deploy-and-manage-image-mode-rhel#push_the_container_image_to_the_registry) is a article oon how to explore immutable in Enterprise Linux further using a registry and automatic updates.
 
 ## Tips
-This is just a example on how to build the base image, to explore more options look at the (Rocky Linux Container Images)[https://quay.io/repository/rockylinux/rockylinux?tab=tags] for other options to build from based on this and edit the files under `10/` for other options.
+This is just a example on how to build the base image, to explore more options look at the [Rocky Linux Container Images](https://quay.io/repository/rockylinux/rockylinux?tab=tags) for other options to build from based on this and edit the files under `10/` for other options.
