@@ -16,23 +16,22 @@ RUN chmod +x /usr/libexec/bootc-base-imagectl
 RUN rm -rf /etc/yum.repos.d/*
 
 COPY --from=repos /etc/yum.repos.d/*.repo /etc/yum.repos.d/
-
 COPY --from=repos /etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-10 /etc/pki/rpm-gpg
-
 COPY rocky-10.yaml /usr/share/doc/bootc-base-imagectl/manifests/
 
 RUN /usr/libexec/bootc-base-imagectl build-rootfs --reinject --manifest=rocky-10 /target-rootfs
 
-###
-
 FROM scratch
-
 COPY --from=builder /target-rootfs/ /
 
-LABEL containers.bootc 1
-LABEL ostree.bootable 1
-LABEL org.opencontainers.image.vendor Rocky Enterprise Software Foundation
-LABEL org.opencontainers.image.description Rocky Linux Bootable Container Image
+LABEL containers.bootc="1" \
+        ostree.bootable="1" \
+        org.opencontainers.image.version="10" \
+        bootc.diskimage-builder="quay.io/centos-bootc/bootc-image-builder" \
+        ostree.bootabl=true \
+        org.opencontainers.image.vendor="Rocky Enterprise Software Foundation" \
+        org.opencontainers.image.description="Rocky Linux Bootable Container Image"
+ENV container=oci
 RUN bootc container lint --fatal-warnings
 STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init"]

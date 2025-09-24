@@ -1,11 +1,10 @@
 releasever: 10
+variables:
+  distro: "rocky10"
 
 repos:
   - baseos
   - appstream
-
-variables:
-  distro: "rocky10"
 
 packages:
   - rocky-repos
